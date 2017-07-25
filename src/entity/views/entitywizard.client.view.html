@@ -1,0 +1,16 @@
+<form name="entityWizardForm" novalidate>
+    <wizard hide-indicators="wizard.hide" edit-mode="wizard.editMode" indicators-position="top" on-finish="finishedWizard()">
+        <div class="wizard-content">
+            <ng-form class="form-horizontal" name="stepForm" ng-controller="CustomStepDeviceAdminController">
+                <wz-step wz-title="{{step.custom.title}}" canexit="exitValidation" wz-disabled="{{step.custom.disabled}}">
+                    <div ng-include src="step.custom.body"></div>
+                </wz-step>
+            </ng-form>
+            <ng-form class="form-horizontal" name="stepForm" ng-controller="StepDeviceAdminController">
+                <wz-step wz-title="{{step.admin.title}}" canexit="exitValidation" wz-disabled="{{step.admin.disabled}}">
+                    <div ng-include src="step.admin.body"></div>
+                </wz-step>
+            </ng-form>
+        </div>
+    </wizard>
+</form>

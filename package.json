@@ -1,0 +1,36 @@
+{
+    "name": "adf-widget-custom-entity-wizard",
+    "version": "0.0.0-0",
+    "repository": "https://github.com/gtrrzvictor/adf-widget-customEntityWizard.git",
+    "author": "Victor Gutierrez <victor.gutierrez@amplia.es>",
+    "license": "MIT",
+    "keywords": [
+        "dashboard",
+        "widget",
+        "adf",
+        "adf-widget"
+    ],
+    "description": "This widget will register a collection of wizards which it will be used by any registered user",
+    "dependencies": {
+        "html-loader": "^0.4.5"
+    },
+    "scripts": {
+        "bundle": "webpack",
+        "publish": "node scripts/register",
+        "update": "node scripts/update",
+        "setaction": "node scripts/setaction",
+        "delete": "node scripts/delete"
+    },
+    "devDependencies": {
+        "angular": "^1.6.5",
+        "angular-templatecache-loader": "^0.2.0",
+        "css-loader": "^0.28.4",
+        "merge": "^1.2.0",
+        "opengate-angular-dashboard-framework": "v2.4.x",
+        "opengate-angular-js": "v0.2.x",
+        "request": "^2.81.0",
+        "style-loader": "^0.18.2",
+        "webpack": "^3.0.0",
+        "wiredep": "~2.2.2"
+    }
+}
