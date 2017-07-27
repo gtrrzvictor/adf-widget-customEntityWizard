@@ -2,7 +2,7 @@ webpackJsonp([0],[
 /* 0 */
 /***/ (function(module, exports) {
 
-var v1='<form name=entityWizardForm novalidate><wizard hide-indicators=wizard.hide edit-mode=wizard.editMode indicators-position=top on-finish=finishedWizard()><div class=wizard-content><ng-form class=form-horizontal name=stepForm ng-controller=CustomStepDeviceAdminController><wz-step wz-title={{step.custom.title}} canexit=exitValidation wz-disabled={{step.custom.disabled}}><div ng-include src=step.custom.body></div></wz-step></ng-form><ng-form class=form-horizontal name=stepForm ng-controller=StepDeviceAdminController><wz-step wz-title={{step.admin.title}} canexit=exitValidation wz-disabled={{step.admin.disabled}}><div ng-include src=step.admin.body></div></wz-step></ng-form></div></wizard></form>';
+var v1='<form name=entityWizardForm novalidate><wizard hide-indicators=wizard.hide edit-mode=wizard.editMode indicators-position=top on-finish=finishedWizard()><div class=wizard-content><ng-form class=form-horizontal name=stepForm ng-controller=CustomStepDeviceAdminController><wz-step wz-title={{step.custom.title}} canexit=exitValidation wz-disabled={{step.custom.disabled}}><div ng-include src=step.custom.body></div></wz-step></ng-form><ng-form class=form-horizontal name=stepForm ng-controller=StepTwoController><wz-step wz-title={{step.admin.title}} canexit=exitValidation wz-disabled={{step.admin.disabled}}><div ng-include src=step.admin.body></div></wz-step></ng-form></div></wizard></form>';
 angular.module('adf.widget.customEntityWizard').run(['$templateCache', function ($templateCache) {$templateCache.put('src/entity/views/entitywizard.client.view.html', v1);}]);
 module.exports=v1
 
@@ -80,6 +80,8 @@ angular.module('adf.widget.customEntityWizard')
                 communicationsInterfaces: []
             }
             this.parse = function() {
+                if (typeof deviceData !== 'object')
+                    return undefined;
                 var promises = [];
                 // STEP ADMIN
                 config.admin = {
@@ -1120,7 +1122,7 @@ _wizard.controller('CustomStepDeviceAdminController', ['$scope', 'WizardHandler'
 
 
 
-_wizard.controller('StepDeviceAdminController', ['$scope', 'WizardHandler', 'entityService', '$api', 'Authentication',
+_wizard.controller('StepTwoController', ['$scope', 'WizardHandler', 'entityService', '$api', 'Authentication',
     function($scope, WizardHandler, entityService, $api, Authentication) {
         var entity = entityService.entity.type;
         var error = null;

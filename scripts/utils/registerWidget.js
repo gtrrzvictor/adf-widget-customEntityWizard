@@ -4,14 +4,14 @@ var request = require('request'),
 
 module.exports.register = function(config, sessionId) {
     var post_req = createRequest('POST', sessionId, config, nameWidget);
-    var form = createForm(post_req);
+    console.log(config);
+    var form = createForm(post_req, config.meta);
     form.append('name', nameWidget);
-    form.append('actions', normalizeActions(config).actions);
 }
 
 module.exports.update = function(config, sessionId) {
     var put_req = createRequest('PUT', sessionId, config, nameWidget);
-    createForm(put_req).append('actions', normalizeActions(config).actions);
+    createForm(put_req, config.meta);
 }
 
 module.exports.delete = function(config, sessionId) {
@@ -28,14 +28,9 @@ module.exports.setAction = function(config, sessionId) {
     Request.call(request.post(requestConfig)).form().append('widgetName', config.widgetName);
 }
 
-function normalizeActions(config) {
-    //Remove all whitespaces
-    config.actions = config.actions.replace(/ /g, '');
-    return config;
-}
-
-function createForm(request) {
+function createForm(request, metaFile) {
     var form = request.form();
+    form.append('meta', fs.createReadStream(process.cwd() + '/' + metaFile));
     form.append('bundle', fs.createReadStream(process.cwd() + '/build/bundle.js'));
     form.append('vendor', fs.createReadStream(process.cwd() + '/build/vendor.bundle.js'));
     return form;

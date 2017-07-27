@@ -1,13 +1,19 @@
 var merge = require('merge');
 var stdin = process.openStdin();
 
+var defaults = {
+    host: '127.0.0.1',
+    meta: 'meta-widget.json',
+    port: '3000'
+}
+
 var putpost_config = {
-    actions: 'Actions which widget allow execute ( in case of multiple actions, separate with "," )'
+    meta: 'Meta File (meta-widget.json):'
 }
 
 var delete_config = {
-    host: 'Type opengate-ux host (v8.opengate.es):',
-    port: 'Type web port (80):',
+    host: 'Type opengate-ux host (localhost):',
+    port: 'Type web port (3000):',
     domain: "Type your domain:",
     user: "Type your user name:",
     password: "Type your password:"
@@ -54,6 +60,9 @@ function readNextKey(keys, labels, config, cb) {
 
     function valueTyped(value) {
         stdin.removeAllListeners('data');
+        if (value.length === 0) {
+            value = defaults[key];
+        }
         config[key] = value;
         if (keys.length > 0) {
             readNextKey(keys, labels, config, cb);

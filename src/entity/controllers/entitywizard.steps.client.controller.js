@@ -220,7 +220,7 @@ _wizard.controller('CustomStepDeviceAdminController', ['$scope', 'WizardHandler'
 
 
 
-_wizard.controller('StepDeviceAdminController', ['$scope', 'WizardHandler', 'entityService', '$api', 'Authentication',
+_wizard.controller('StepTwoController', ['$scope', 'WizardHandler', 'entityService', '$api', 'Authentication',
     function($scope, WizardHandler, entityService, $api, Authentication) {
         var entity = entityService.entity.type;
         var error = null;

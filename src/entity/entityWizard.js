@@ -37,6 +37,8 @@ angular.module('adf.widget.customEntityWizard')
                 communicationsInterfaces: []
             }
             this.parse = function() {
+                if (typeof deviceData !== 'object')
+                    return undefined;
                 var promises = [];
                 // STEP ADMIN
                 config.admin = {
