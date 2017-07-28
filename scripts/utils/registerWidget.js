@@ -38,7 +38,7 @@ function createForm(request, metaFile) {
 
 function createRequest(type, sessionId, config, nameWidget) {
     var requestConfig = {
-        url: 'http://' + config.host + ':' + config.port + '/api/wiwi/' + config.domain + '/widgets',
+        url: 'http://' + config.host + ':' + config.port + '/api/wiwi/' + config.domain + '/bundles',
         headers: {
             "Cookie": [sessionId]
         }

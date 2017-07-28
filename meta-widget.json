@@ -1,6 +1,6 @@
 {
     "widgets": ["customEntityWizard"],
     "actions": {
-        "createDevice_ouw": ["customEntityWizard"]
+        "editDevice": ["customEntityWizard"]
     }
 }
