@@ -19,12 +19,6 @@ var delete_config = {
     password: "Type your password:"
 }
 
-var setaction_config = {
-    workspace: 'Type opengate-ux workspace identifier:',
-    actionName: 'Type the action name:',
-    widgetName: "Type the widget name:"
-}
-
 module.exports.post = function(cb) {
     var _labels = merge(putpost_config, delete_config);
     var keys = Object.keys(_labels).reverse();
@@ -34,12 +28,6 @@ module.exports.post = function(cb) {
 module.exports.delete = function(cb) {
     var keys = Object.keys(delete_config).reverse();
     readNextKey(keys, delete_config, {}, cb);
-};
-
-module.exports.setaction = function(cb) {
-    var _labels = merge(setaction_config, delete_config);
-    var keys = Object.keys(_labels).reverse();
-    readNextKey(keys, _labels, {}, cb);
 };
 
 function readNextKey(keys, labels, config, cb) {

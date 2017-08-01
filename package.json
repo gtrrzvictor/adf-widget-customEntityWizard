@@ -18,7 +18,6 @@
         "bundle": "webpack",
         "publish": "node scripts/register",
         "update": "node scripts/update",
-        "setaction": "node scripts/setaction",
         "delete": "node scripts/delete"
     },
     "devDependencies": {

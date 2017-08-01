@@ -18,16 +18,6 @@ module.exports.delete = function(config, sessionId) {
     createRequest('DELETE', sessionId, config, nameWidget).end();
 }
 
-module.exports.setAction = function(config, sessionId) {
-    var requestConfig = {
-        url: 'http://' + config.host + ':' + config.port + '/api/workspaces/' + config.workspace + '/widgetByAction/' + config.actionName,
-        headers: {
-            "Cookie": [sessionId]
-        }
-    };
-    Request.call(request.post(requestConfig)).form().append('widgetName', config.widgetName);
-}
-
 function createForm(request, metaFile) {
     var form = request.form();
     form.append('meta', fs.createReadStream(process.cwd() + '/' + metaFile));
